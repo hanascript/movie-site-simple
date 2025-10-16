@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TicketPlus+</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://kit.fontawesome.com/e55bf0d525.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <figure class="movie-background-wrapper">
+        <nav class="navbar">
+          <div class="navbar-left">
+            <figure class="navbar-logo-wrapper">
+              <img src="public/images/movielogo.png" alt="logo" />
+            </figure>
+            <a href="#">Home</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="navbar-right">
+            <div class="navbar-input-wrapper">
+              <input type="text" class="navbar-input" placeholder="Find a movie" />
+              <i class="fa-solid fa-magnifying-glass navbar-search"></i>
+            </div>
+            <i class="fa-solid fa-gear navbar-settings" aria-hidden="true"></i>
+          </div>
+        </nav>
+        <img src="public/images/moviebackground.jpg" alt="movie-background" class="movie-background-image" />
+        <div class="cta-section">
+          <h1 class="cta-title"> Ticket<span class="text-highlight">+</span> </h1>
+          <h3 class="cta-subtitle">
+            With over <span class="text-highlight">3000</span> movies on Ticket<span class="text-highlight">+</span>,
+            the possibilites are endless!
+          </h3>
+          <div class="cta-search">
+            <input type="text" placeholder="Find a movie" />
+            <i class="fa-solid fa-magnifying-glass cta-search-icon"></i>
+          </div>
+        </div>
+      </figure>
+    </header>
+
+    <!-- Movies Section -->
+    <section id="movies-section">
+      <div class="container">
+        <div class="row">
+          <div class="movies-content">
+            <div class="movies-top">
+              <h2 class="movies-title">Search results for:</h2>
+              <h2 class="movies-search-results">""</h2>
+            </div>
+            <div" class="movies-list">
+            <i class="fa-solid fa-spinner movie-list-loading"></i>
+            <!-- Movie Item Start -->
+
+            <!-- Movie Items End -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="scripts.js"></script>
+  </body>
+</html>

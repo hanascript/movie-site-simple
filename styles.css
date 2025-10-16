@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* reset */
+
+body {
+  color: #fff;
+  background-color: #1e1e1e;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Helpers */
+
+.text-highlight {
+  color: crimson;
+  font-weight: 300;
+}
+
+.container {
+  padding: 80px 0;
+}
+
+.row {
+  margin: 0 40px;
+}
+
+/* Header */
+.movie-background-wrapper {
+  height: 420px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 60px 50px 0 rgb(5, 5, 5, 0.45);
+}
+
+.movie-background-image {
+  filter: opacity(30%);
+}
+
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 80px;
+  z-index: 1;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-logo-wrapper {
+  width: 80px;
+  margin-right: 32px;
+}
+
+.navbar-logo-wrapper img {
+  max-width: 100%;
+  filter: invert(0.9);
+}
+
+.navbar-left a {
+  margin: 0 16px;
+  font-weight: 200;
+  font-size: 18px;
+  padding-bottom: 4px;
+  border-bottom: 1px transparent solid;
+  transition: color 400ms ease, border-bottom-color 400ms ease;
+}
+
+.navbar-left a:hover {
+  color: crimson;
+  border-bottom-color: crimson;
+}
+
+.navbar-input-wrapper {
+  position: relative;
+}
+
+.navbar-input {
+  padding: 12px 4px 12px 32px;
+  border-radius: 40px;
+  width: 0px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  margin-right: 24px;
+  transition: width 500ms ease;
+  cursor: default;
+}
+
+.navbar-input:focus,
+.navbar-input:active {
+  width: 240px;
+  outline: 2px #fff solid;
+  cursor: text;
+}
+
+.navbar-search {
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.navbar-settings {
+  cursor: not-allowed;
+}
+
+/* CTA Section */
+.cta-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  padding: 0 16px;
+}
+
+.cta-title {
+  font-size: 60px;
+  font-weight: 200;
+  margin-top: 80px;
+  margin-bottom: 12px;
+}
+
+.cta-subtitle {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.cta-search {
+  position: relative;
+}
+
+.cta-search input {
+  padding: 24px 60px 24px 30px;
+  border-radius: 40px;
+  background-color: transparent;
+  color: #fff;
+  border: 2px #fff solid;
+  font-size: 20px;
+  transition: 400ms ease;
+  max-width: 100%;
+}
+
+.cta-search input:focus,
+.cta-search input:active {
+  transform: scale(1.02);
+  outline: none;
+  box-shadow: 0px 0px 8px crimson;
+}
+
+.cta-search-icon {
+  position: absolute;
+  font-size: 24px;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  transition: 400ms ease;
+  cursor: pointer;
+}
+
+/* Movies Section */
+
+.movies-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.movies-top {
+  width: 90%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.movies-title {
+  font-size: 32px;
+  font-weight: 200;
+}
+
+.movies-search-results {
+  padding: 8px 0;
+  margin-left: 24px;
+  font-weight: 300;
+  text-shadow: 1px 1px 10px crimson, 1px 1px 10px crimson;
+  color: crimson;
+  border-bottom: 1.5px crimson solid;
+  font-size: 24px;
+  display: none;
+}
+
+.movies-list {
+  margin-top: 60px;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+}
+
+.movie-list-loading {
+  font-size: 64px;
+  color: crimson;
+  display: none;
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: loading 1000ms infinite;
+}
+
+.movie-item {
+  width: 198px;
+  margin: 24px 8px;
+  background-color: #1e1e1e;
+  color: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 12px 0px rgb(5, 5, 5, 0.45);
+  position: relative;
+}
+
+.movie-image-wrapper {
+  background-color: #1e1e1e;
+  width: 100%;
+  max-height: 288px;
+  overflow: hidden;
+}
+
+.movie-image-wrapper img {
+  width: 100%;
+  max-height: 288px;
+  height: 288px;
+  transition: all 0.4s ease;
+  z-index: -2;
+}
+
+.movie-image-wrapper:hover img {
+  transform: scale(1.04);
+  filter: opacity(45%) blur(4px);
+}
+
+.movie-image-wrapper:hover .movie-info-title,
+.movie-image-wrapper:hover .movie-info-list {
+  opacity: 1;
+}
+
+.movie-title {
+  font-weight: 200;
+  font-size: 14px;
+  margin: 8px 0 24px 0;
+  padding: 0 8px;
+  color: #fff;
+  text-align: center;
+}
+
+.movie-info-title {
+  position: absolute;
+  text-align: left;
+  color: #fff;
+  font-size: 20px;
+  top: 24px;
+  left: 16px;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.movie-info-list {
+  position: absolute;
+  top: 45%;
+  left: 8px;
+  transform: translateY(-50%);
+  width: 90%;
+  z-index: 1;
+  opacity: 0%;
+  transition: opacity 200ms;
+}
+
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding: 0 8px;
+  color: #fff;
+}
+
+.movie-info:first-child {
+  margin-top: 60px;
+}
+
+.no-results {
+  color: #fff;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 840px) {
+  .movies-top {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    margin: 0 16px;
+  }
+
+  .navbar {
+    padding: 0 40px;
+  }
+
+  .movies-list {
+    width: 100%;
+  }
+
+  .movie-item {
+    width: 180px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding-top: 24px;
+  }
+
+  .navbar-logo-wrapper,
+  .navbar-input-wrapper {
+    display: none;
+  }
+
+  .navbar-left a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 550px) {
+  .cta-title {
+    font-size: 40px;
+  }
+
+  .cta-search input {
+    padding: 16px 0 16px 30px;
+  }
+
+  .cta-subtitle {
+    font-size: 18px;
+  }
+
+  .movie-item {
+    width: 124px;
+  }
+
+  .movie-image-wrapper,
+  .movie-image-wrapper img {
+    max-height: 188px;
+  }
+}
